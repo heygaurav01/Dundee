@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
+import '../Barchart.css';
 
-const SentimentChart = ({ data }) => {
+const Barchart = ({ data }) => {
   const svgRef = useRef();
 
   useEffect(() => {
@@ -56,12 +57,12 @@ const SentimentChart = ({ data }) => {
       .attr('y', (d) => y(d.Sentiment_Intensity))
       .attr('width', x.bandwidth())
       .attr('height', (d) => height - y(d.Sentiment_Intensity))
-      .attr('fill', 'steelblue')
+      .attr('fill', 'steelgreen')
       .on('mouseover', function (event, d) {
-        d3.select(this).attr('fill', 'green');
+        d3.select(this).transition().duration(200).attr('fill', 'darkgreen');
       })
       .on('mouseout', function (event, d) {
-        d3.select(this).attr('fill', 'steelblue');
+        d3.select(this).transition().duration(200).attr('fill', 'orange');
       });
 
     // Add text labels on bars
@@ -79,10 +80,10 @@ const SentimentChart = ({ data }) => {
 
   return (
     <div>
-      <h1>Sentiment Intensity by Panellist and Topic</h1>
+      <h2>Sentiment Intensity by Panellist and Topic</h2>
       <svg ref={svgRef}></svg>
     </div>
   );
 };
 
-export default SentimentChart;
+export default Barchart;

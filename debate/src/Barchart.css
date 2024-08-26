@@ -1,0 +1,22 @@
+.bar {
+    transition: fill 0.3s ease;
+  }
+  
+  .axis-label {
+    font-size: 14px;
+    fill: white;
+  }
+  
+  .label {
+    fill: white;
+    font-weight: bold;
+  }
+  
+  h2 {
+    color: white;
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  

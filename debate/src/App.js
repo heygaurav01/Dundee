@@ -1,5 +1,6 @@
 import React from 'react';
-import SentimentChart from './components/Barchart.jsx';
+import Barchart from './components/Barchart.jsx';
+import './Rpp.css';
 const dataEpisode2 = [
   {Topic: "Healthcare", Panellist: "Panellist A", Party: "Labour", Viewpoint: "Support", Sentiment: "Positive", Sentiment_Intensity: 0.8, Time_of_Discussion: 25},
   {Topic: "Healthcare", Panellist: "Panellist B", Party: "Conservative", Viewpoint: "Opposition", Sentiment: "Mildly Negative", Sentiment_Intensity: -0.3, Time_of_Discussion: 20},
@@ -18,29 +19,27 @@ const dataEpisode2 = [
   {Topic: "Climate Change", Panellist: "Panellist A", Party: "Liberal Democrat", Viewpoint: "Support", Sentiment: "Positive", Sentiment_Intensity: 0.8, Time_of_Discussion: 18},
   {Topic: "Climate Change", Panellist: "Panellist B", Party: "Labour", Viewpoint: "Opposition", Sentiment: "Negative", Sentiment_Intensity: -0.4, Time_of_Discussion: 15}
   ];
-const App = () => {
-  const data = [
-    { Topic: "Healthcare", Panellist: "Panellist A", Party: "Liberal Democrat", Viewpoint: "Opposition", Sentiment: "Mildly Negative", Sentiment_Intensity: 0.9, Time_of_Discussion: 29 },
-    { Topic: "Healthcare", Panellist: "Panellist B", Party: "Liberal Democrat", Viewpoint: "Neutral", Sentiment: "Positive", Sentiment_Intensity: 0.8, Time_of_Discussion: 24 },
-    { Topic: "Healthcare", Panellist: "Panellist C", Party: "Liberal Democrat", Viewpoint: "Neutral", Sentiment: "Neutral", Sentiment_Intensity: 0, Time_of_Discussion: 13 },
-    //...rest of the data
-  ];
-
-  return (
-    <>
-    
+  const App = () => {
+    const data = [
+      { Topic: "Healthcare", Panellist: "Panellist A", Party: "Liberal Democrat", Viewpoint: "Opposition", Sentiment: "Mildly Negative", Sentiment_Intensity: 0.9, Time_of_Discussion: 29 },
+      { Topic: "Healthcare", Panellist: "Panellist B", Party: "Liberal Democrat", Viewpoint: "Neutral", Sentiment: "Positive", Sentiment_Intensity: 0.8, Time_of_Discussion: 24 },
+      { Topic: "Healthcare", Panellist: "Panellist C", Party: "Liberal Democrat", Viewpoint: "Support", Sentiment: "Positive", Sentiment_Intensity: 0.7, Time_of_Discussion: 30 },
+    ];
   
-  <div style={{ backgroundColor: "skyblue"}}>
-<h1>Political debate</h1>
-<div style = {{height: "50vh",overflow:"hidden", objectFit:"cover"}}> 
-      <SentimentChart data={data} />
-    </div>
-    <div style = {{height: "50vh",overflow:"hidden", objectFit:"cover"}}> 
-    <SentimentChart data={dataEpisode2} />
-  </div>
-  </div>
-  </>
-  );
-};
-
-export default App;
+    return (
+      <>
+        <div className="app-container">
+          <h1 className="app-header">Political Debate</h1>
+          <div className="chart-container">
+            <Barchart data={data} />
+          </div>
+          <div className="chart-container">
+            <Barchart data={dataEpisode2} />
+          </div>
+        </div>
+      </>
+    );
+  };
+  
+  export default App;
+  
