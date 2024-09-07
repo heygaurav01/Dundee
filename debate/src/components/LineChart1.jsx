@@ -1,72 +1,107 @@
-import React, { useRef, useEffect } from 'react';
-import * as d3 from 'd3';
+import React from 'react';
+import { Line } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend } from 'chart.js';
+import 'chart.js/auto';
+import './LineChart1.css'; // Create and link the CSS file
 
-const LineChart1 = ({ data }) => {
-  const svgRef = useRef(null);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
 
-  useEffect(() => {
-    // Set dimensions and margins
-    const width = 800;
-    const height = 400;
-    const margin = { top: 20, right: 30, bottom: 30, left: 40 };
+const LineChart1 = () => {
+  const data = [
+    { date: '2024-01-01', topic: 'Healthcare', intensity: 0, sentiment: 'Neutral' },
+    { date: '2024-01-01', topic: 'Healthcare', intensity: -0.5, sentiment: 'Strongly Positive' },
+    { date: '2024-01-01', topic: 'Immigration', intensity: 0, sentiment: 'Mildly Negative' },
+    { date: '2024-01-01', topic: 'Immigration', intensity: -0.5, sentiment: 'Mildly Negative' },
+    { date: '2024-01-01', topic: 'Immigration', intensity: -0.7, sentiment: 'Neutral' },
+    { date: '2024-01-01', topic: 'Immigration', intensity: 0, sentiment: 'Positive' },
+    { date: '2024-01-01', topic: 'Immigration', intensity: -0.7, sentiment: 'Strongly Positive' },
+    { date: '2024-01-01', topic: 'Immigration', intensity: 0, sentiment: 'Strongly Positive' },
+    { date: '2024-01-01', topic: 'Education', intensity: -0.7, sentiment: 'Strongly Positive' },
+    { date: '2024-01-01', topic: 'Education', intensity: 0, sentiment: 'Neutral' },
+    { date: '2024-01-01', topic: 'Education', intensity: 0.8, sentiment: 'Negative' },
+    { date: '2024-01-01', topic: 'Education', intensity: 0, sentiment: 'Strongly Positive' },
+    { date: '2024-01-01', topic: 'Education', intensity: 0.8, sentiment: 'Mildly Negative' },
+    { date: '2024-01-01', topic: 'Education', intensity: 0, sentiment: 'Mildly Negative' },
+    { date: '2024-01-01', topic: 'Economy', intensity: 0.9, sentiment: 'Mildly Negative' },
+    { date: '2024-01-01', topic: 'Economy', intensity: 0.9, sentiment: 'Strongly Positive' },
+    { date: '2024-01-01', topic: 'Economy', intensity: 0.9, sentiment: 'Mildly Negative' },
+    { date: '2024-01-01', topic: 'Economy', intensity: -0.7, sentiment: 'Negative' },
+    { date: '2024-01-01', topic: 'Economy', intensity: 0.8, sentiment: 'Neutral' },
+    { date: '2024-01-01', topic: 'Economy', intensity: -0.7, sentiment: 'Mildly Negative' },
+    { date: '2024-01-01', topic: 'Climate Change', intensity: 0.9, sentiment: 'Positive' },
+    { date: '2024-01-01', topic: 'Climate Change', intensity: -0.5, sentiment: 'Mildly Negative' },
+    { date: '2024-01-01', topic: 'Climate Change', intensity: 0.9, sentiment: 'Positive' },
+    { date: '2024-01-01', topic: 'Climate Change', intensity: -0.5, sentiment: 'Positive' },
+    { date: '2024-01-01', topic: 'Climate Change', intensity: 0, sentiment: 'Negative' },
+    { date: '2024-01-01', topic: 'Climate Change', intensity: -0.5, sentiment: 'Neutral' },
+    { date: '2024-01-01', topic: 'Housing', intensity: 0, sentiment: 'Positive' },
+    { date: '2024-01-01', topic: 'Housing', intensity: 0.9, sentiment: 'Positive' },
+    { date: '2024-01-01', topic: 'Housing', intensity: -0.5, sentiment: 'Positive' },
+    { date: '2024-01-01', topic: 'Housing', intensity: -0.5, sentiment: 'Strongly Positive' },
+    { date: '2024-01-01', topic: 'Housing', intensity: -0.7, sentiment: 'Neutral' },
+    { date: '2024-01-01', topic: 'Housing', intensity: 0.8, sentiment: 'Strongly Positive' }
+  ];
 
-    const svg = d3.select(svgRef.current)
-      .attr('width', width)
-      .attr('height', height);
+  const chartData = {
+    labels: data.map(d => d.topic),
+    datasets: [{
+      label: 'Intensity',
+      data: data.map(d => d.intensity),
+      borderColor: 'rgba(255, 99, 132, 1)',
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      pointBackgroundColor: 'white',
+      pointBorderColor: 'rgba(255, 99, 132, 1)',
+      pointHoverBackgroundColor: 'rgba(255, 99, 132, 1)',
+      pointHoverBorderColor: 'white',
+      pointRadius: 6,
+      fill: false,
+      tension: 0.3,
+    }]
+  };
 
-    // Clear previous content
-    svg.selectAll('*').remove();
-
-    // Set up scales
-    const x = d3.scaleTime()
-      .domain(d3.extent(data, d => new Date(d.Date)))
-      .range([margin.left, width - margin.right]);
-
-    const y = d3.scaleLinear()
-      .domain([d3.min(data, d => d.Intensity) - 1, d3.max(data, d => d.Intensity) + 1])
-      .nice()
-      .range([height - margin.bottom, margin.top]);
-
-    // Set up line generator
-    const line = d3.line()
-      .x(d => x(new Date(d.Date)))
-      .y(d => y(d.Intensity));
-
-    // Draw the line
-    svg.append('path')
-      .datum(data)
-      .attr('fill', 'none')
-      .attr('stroke', 'steelblue')
-      .attr('stroke-width', 1.5)
-      .attr('d', line);
-
-    // Add axes
-    svg.append('g')
-      .attr('transform', `translate(0,${height - margin.bottom})`)
-      .call(d3.axisBottom(x));
-
-    svg.append('g')
-      .attr('transform', `translate(${margin.left},0)`)
-      .call(d3.axisLeft(y));
-
-    // Add labels
-    svg.append('text')
-      .attr('x', width / 2)
-      .attr('y', height - 10)
-      .attr('text-anchor', 'middle')
-      .text('Date');
-
-    svg.append('text')
-      .attr('x', -height / 2)
-      .attr('y', 15)
-      .attr('text-anchor', 'middle')
-      .attr('transform', 'rotate(-90)')
-      .text('Intensity');
-
-  }, [data]);
+  const options = {
+    scales: {
+      y: {
+        beginAtZero: true,
+        min: -1,
+        max: 1,
+        ticks: {
+          stepSize: 0.5,
+          color: 'black',
+        },
+        grid: {
+          color: 'rgba(255, 255, 255, 0.1)',
+        }
+      },
+      x: {
+        ticks: {
+          color: 'black',
+        },
+        grid: {
+          color: 'rgba(204, 255, 204, 1)',
+        }
+      }
+    },
+    plugins: {
+      tooltip: {
+        enabled: true,
+        callbacks: {
+          label: function(context) {
+            const dataPoint = data[context.dataIndex];
+            return `Topic: ${dataPoint.topic}, Intensity: ${dataPoint.intensity}, Sentiment: ${dataPoint.sentiment}`;
+          }
+        }
+      }
+    }
+  };
 
   return (
-    <svg ref={svgRef}></svg>
+    <div className="trends-container">
+      <h1 className="trends-title"> Trends Visualization</h1>
+      <div className="chart-container">
+        <Line data={chartData} options={options} />
+      </div>
+    </div>
   );
 };
 

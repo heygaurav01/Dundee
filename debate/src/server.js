@@ -10,10 +10,10 @@ const app = express();
 const port = 3000;
 
 // Replace with your YouTube Data API key
-const YOUTUBE_API_KEY = 'YOUR_YOUTUBE_API_KEY';
+const YOUTUBE_API_KEY = 'AIzaSyDeaMyzqatQshJJttR11W-EHhvHjXh1iNc';
 const GOOGLE_SPEECH_API_KEY = 'AIzaSyChRFHYeHQVArhF-QoRtrYxgkksB0r-M7Y';
 
-// Route to accept YouTube link
+// Route to accept YouTube 
 app.get('/generate-debate-data', async (req, res) => {
   const youtubeUrl = req.query.url;
 
