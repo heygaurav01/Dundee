@@ -19,4 +19,116 @@
     margin-bottom: 20px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   }
+  /* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container for the Bar Chart */
+.barchart-container {
+  width: 100%;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Header Styling */
+.barchart-header {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  color: #ff6600; /* Highlighted color */
+  text-shadow: 0 0 15px rgba(255, 102, 0, 0.7), 0 0 25px rgba(255, 102, 0, 0.5);
+  margin-bottom: 20px;
+  animation: glow 1.5s infinite alternate;
+}
+
+/* Animation for header */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px rgba(255, 102, 0, 0.5);
+  }
+  to {
+    text-shadow: 0 0 35px rgba(255, 102, 0, 1);
+  }
+}
+
+/* Bar Chart Styling */
+.barchart {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+/* Individual Bar Container */
+.barchart-bar-container {
+  width: 18%;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.barchart-bar-container:hover {
+  transform: scale(1.1); /* Scale up on hover */
+}
+
+/* Bar Styling */
+.barchart-bar {
+  width: 100%;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.1));
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+  transition: height 0.5s ease-out;
+}
+
+/* Percentage Text Inside the Bar */
+.barchart-percentage {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Label Underneath Each Bar */
+.barchart-label {
+  margin-top: 10px;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* VFX - Bar Glow */
+.barchart-bar:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .barchart {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .barchart-bar-container {
+    width: 80%;
+    margin-bottom: 25px;
+  }
+
+  .barchart-header {
+    font-size: 28px;
+  }
+}
+
   

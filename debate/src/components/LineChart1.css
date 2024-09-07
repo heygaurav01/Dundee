@@ -1,0 +1,78 @@
+/* src/components/LineChart1.css */
+
+/* Container Styles */
+.linechart1-container {
+    padding: 20px;
+    background: #fff5e1;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  /* VFX: Hover Effect */
+  .linechart1-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Chart Animation: Slide In */
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .linechart1 {
+    animation: slideIn 1.2s ease-out;
+  }
+  
+  /* Chart Heading Styles */
+  .linechart1-heading {
+    text-align: center;
+    font-size: 24px;
+    color: #ff6f61;
+    font-weight: bold;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  /* Fade-In Animation for Heading */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+/* src/components/LineChart1.css */
+.linechart1-container {
+  padding: 20px;
+  background: #fff5e1;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease-in-out;
+}
+
+.linechart1-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.linechart1 {
+  animation: slideIn 1.2s ease-out;
+}
+
+.linechart1-heading {
+  text-align: center;
+  font-size: 24px;
+  color: #ff6f61;
+  font-weight: bold;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease-in-out;
+}  

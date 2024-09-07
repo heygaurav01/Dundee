@@ -1,45 +1,82 @@
 import React from 'react';
 import Barchart from './components/Barchart.jsx';
-import './Rpp.css';
+//import Navbar from './components/navbar.jsx'; // Import the Navbar component
+import Piechart from './components/Piechart.jsx';
+import LineChart1 from './components/LineChart1.jsx';
+
+//import LineChart2 from './components/LineChart2.jsx';
+ // Import the Piechart component
+import './Rpp.css'; // Assuming you want to use App.css instead of Rpp.css
+
+const dataEpisode1 = [
+  { Topic: "Healthcare", Panellist: "Panellist A", Party: "Liberal Democrat", Viewpoint: "Opposition", Sentiment: "Mildly Negative", Sentiment_Intensity: 0.9, Time_of_Discussion: 29 },
+  { Topic: "Healthcare", Panellist: "Panellist B", Party: "Liberal Democrat", Viewpoint: "Neutral", Sentiment: "Positive", Sentiment_Intensity: 0.8, Time_of_Discussion: 24 },
+  { Topic: "Healthcare", Panellist: "Panellist C", Party: "Liberal Democrat", Viewpoint: "Support", Sentiment: "Positive", Sentiment_Intensity: 0.7, Time_of_Discussion: 30 },
+  { Topic: "Healthcare", Panellist: "Panellist D", Party: "Conservative", Viewpoint: "Support", Sentiment: "Neutral", Sentiment_Intensity: 0.9, Time_of_Discussion: 26 },
+  { Topic: "Healthcare", Panellist: "Panellist E", Party: "Labour", Viewpoint: "Neutral", Sentiment: "Strongly Positive", Sentiment_Intensity: -0.5, Time_of_Discussion: 17 },
+  // Add more data entries as needed
+];
+const data = [
+  { Date: '2024-01-01', Topic: 'Healthcare', Intensity: 0, Sentiment: 'Neutral' },
+  { Date: '2024-01-01', Topic: 'Healthcare', Intensity: -0.5, Sentiment: 'Strongly Positive' },
+  { Date: '2024-01-01', Topic: 'Immigration', Intensity: 0, Sentiment: 'Mildly Negative' },
+  { Date: '2024-01-01', Topic: 'Immigration', Intensity: -0.5, Sentiment: 'Mildly Negative' },
+  { Date: '2024-01-01', Topic: 'Immigration', Intensity: -0.7, Sentiment: 'Neutral' },
+  { Date: '2024-01-01', Topic: 'Immigration', Intensity: 0, Sentiment: 'Positive' },
+  { Date: '2024-01-01', Topic: 'Immigration', Intensity: -0.7, Sentiment: 'Strongly Positive' },
+  { Date: '2024-01-01', Topic: 'Immigration', Intensity: 0, Sentiment: 'Strongly Positive' },
+  { Date: '2024-01-01', Topic: 'Education', Intensity: -0.7, Sentiment: 'Strongly Positive' },
+  { Date: '2024-01-01', Topic: 'Education', Intensity: 0, Sentiment: 'Neutral' },
+  { Date: '2024-01-01', Topic: 'Education', Intensity: 0.8, Sentiment: 'Negative' },
+  { Date: '2024-01-01', Topic: 'Education', Intensity: 0, Sentiment: 'Strongly Positive' },
+  { Date: '2024-01-01', Topic: 'Education', Intensity: 0.8, Sentiment: 'Mildly Negative' },
+  { Date: '2024-01-01', Topic: 'Education', Intensity: 0, Sentiment: 'Mildly Negative' },
+  { Date: '2024-01-01', Topic: 'Economy', Intensity: 0.9, Sentiment: 'Mildly Negative' },
+  { Date: '2024-01-01', Topic: 'Economy', Intensity: 0.9, Sentiment: 'Strongly Positive' },
+  { Date: '2024-01-01', Topic: 'Economy', Intensity: 0.9, Sentiment: 'Mildly Negative' },
+  { Date: '2024-01-01', Topic: 'Economy', Intensity: -0.7, Sentiment: 'Negative' },
+  { Date: '2024-01-01', Topic: 'Economy', Intensity: 0.8, Sentiment: 'Neutral' },
+  { Date: '2024-01-01', Topic: 'Economy', Intensity: -0.7, Sentiment: 'Mildly Negative' },
+  { Date: '2024-01-01', Topic: 'Climate Change', Intensity: 0.9, Sentiment: 'Positive' },
+  { Date: '2024-01-01', Topic: 'Climate Change', Intensity: -0.5, Sentiment: 'Mildly Negative' },
+  { Date: '2024-01-01', Topic: 'Climate Change', Intensity: 0.9, Sentiment: 'Positive' },
+  { Date: '2024-01-01', Topic: 'Climate Change', Intensity: -0.5, Sentiment: 'Positive' },
+  { Date: '2024-01-01', Topic: 'Climate Change', Intensity: 0, Sentiment: 'Negative' },
+  { Date: '2024-01-01', Topic: 'Climate Change', Intensity: -0.5, Sentiment: 'Neutral' },
+  { Date: '2024-01-01', Topic: 'Housing', Intensity: 0, Sentiment: 'Positive' },
+  { Date: '2024-01-01', Topic: 'Housing', Intensity: 0.9, Sentiment: 'Positive' },
+  { Date: '2024-01-01', Topic: 'Housing', Intensity: -0.5, Sentiment: 'Positive' },
+  { Date: '2024-01-01', Topic: 'Housing', Intensity: -0.5, Sentiment: 'Strongly Positive' },
+  { Date: '2024-01-01', Topic: 'Housing', Intensity: -0.7, Sentiment: 'Neutral' },
+  { Date: '2024-01-01', Topic: 'Housing', Intensity: 0.8, Sentiment: 'Strongly Positive' }
+];
 const dataEpisode2 = [
-  {Topic: "Healthcare", Panellist: "Panellist A", Party: "Labour", Viewpoint: "Support", Sentiment: "Positive", Sentiment_Intensity: 0.8, Time_of_Discussion: 25},
-  {Topic: "Healthcare", Panellist: "Panellist B", Party: "Conservative", Viewpoint: "Opposition", Sentiment: "Mildly Negative", Sentiment_Intensity: -0.3, Time_of_Discussion: 20},
-  {Topic: "Healthcare", Panellist: "Panellist C", Party: "Liberal Democrat", Viewpoint: "Neutral", Sentiment: "Neutral", Sentiment_Intensity: 0, Time_of_Discussion: 15},
-  {Topic: "Healthcare", Panellist: "Panellist D", Party: "SNP", Viewpoint: "Support", Sentiment: "Positive", Sentiment_Intensity: 0.7, Time_of_Discussion: 18},
-  {Topic: "Immigration", Panellist: "Panellist A", Party: "Conservative", Viewpoint: "Support", Sentiment: "Positive", Sentiment_Intensity: 0.6, Time_of_Discussion: 12},
-  {Topic: "Immigration", Panellist: "Panellist B", Party: "Labour", Viewpoint: "Opposition", Sentiment: "Negative", Sentiment_Intensity: -0.4, Time_of_Discussion: 25},
-  {Topic: "Immigration", Panellist: "Panellist C", Party: "Liberal Democrat", Viewpoint: "Neutral", Sentiment: "Neutral", Sentiment_Intensity: 0, Time_of_Discussion: 22},
-  {Topic: "Immigration", Panellist: "Panellist D", Party: "SNP", Viewpoint: "Opposition", Sentiment: "Mildly Negative", Sentiment_Intensity: -0.5, Time_of_Discussion: 21},
-  {Topic: "Education", Panellist: "Panellist A", Party: "SNP", Viewpoint: "Neutral", Sentiment: "Strongly Positive", Sentiment_Intensity: 0.9, Time_of_Discussion: 19},
-  {Topic: "Education", Panellist: "Panellist B", Party: "Conservative", Viewpoint: "Support", Sentiment: "Positive", Sentiment_Intensity: 0.8, Time_of_Discussion: 14},
-  {Topic: "Education", Panellist: "Panellist C", Party: "Labour", Viewpoint: "Opposition", Sentiment: "Negative", Sentiment_Intensity: -0.6, Time_of_Discussion: 23},
-  {Topic: "Education", Panellist: "Panellist D", Party: "Liberal Democrat", Viewpoint: "Neutral", Sentiment: "Neutral", Sentiment_Intensity: 0, Time_of_Discussion: 17},
-  {Topic: "Economy", Panellist: "Panellist A", Party: "Labour", Viewpoint: "Support", Sentiment: "Positive", Sentiment_Intensity: 0.7, Time_of_Discussion: 24},
-  {Topic: "Economy", Panellist: "Panellist B", Party: "Conservative", Viewpoint: "Opposition", Sentiment: "Negative", Sentiment_Intensity: -0.5, Time_of_Discussion: 22},
-  {Topic: "Climate Change", Panellist: "Panellist A", Party: "Liberal Democrat", Viewpoint: "Support", Sentiment: "Positive", Sentiment_Intensity: 0.8, Time_of_Discussion: 18},
-  {Topic: "Climate Change", Panellist: "Panellist B", Party: "Labour", Viewpoint: "Opposition", Sentiment: "Negative", Sentiment_Intensity: -0.4, Time_of_Discussion: 15}
-  ];
-  const App = () => {
-    const data = [
-      { Topic: "Healthcare", Panellist: "Panellist A", Party: "Liberal Democrat", Viewpoint: "Opposition", Sentiment: "Mildly Negative", Sentiment_Intensity: 0.9, Time_of_Discussion: 29 },
-      { Topic: "Healthcare", Panellist: "Panellist B", Party: "Liberal Democrat", Viewpoint: "Neutral", Sentiment: "Positive", Sentiment_Intensity: 0.8, Time_of_Discussion: 24 },
-      { Topic: "Healthcare", Panellist: "Panellist C", Party: "Liberal Democrat", Viewpoint: "Support", Sentiment: "Positive", Sentiment_Intensity: 0.7, Time_of_Discussion: 30 },
-    ];
-  
-    return (
-      <>
-        <div className="app-container">
-          <h1 className="app-header">Political Debate</h1>
-          <div className="chart-container">
-            <Barchart data={data} />
-          </div>
-          <div className="chart-container">
-            <Barchart data={dataEpisode2} />
-          </div>
-        </div>
-      </>
-    );
-  };
-  
-  export default App;
-  
+  { Topic: "Healthcare", Panellist: "Panellist A", Party: "Labour", Viewpoint: "Support", Sentiment: "Positive", Sentiment_Intensity: 0.8, Time_of_Discussion: 25 },
+  { Topic: "Healthcare", Panellist: "Panellist B", Party: "Conservative", Viewpoint: "Opposition", Sentiment: "Mildly Negative", Sentiment_Intensity: -0.3, Time_of_Discussion: 20 },
+  { Topic: "Healthcare", Panellist: "Panellist C", Party: "Liberal Democrat", Viewpoint: "Neutral", Sentiment: "Neutral", Sentiment_Intensity: 0, Time_of_Discussion: 15 },
+  { Topic: "Healthcare", Panellist: "Panellist D", Party: "SNP", Viewpoint: "Support", Sentiment: "Positive", Sentiment_Intensity: 0.7, Time_of_Discussion: 18 },
+  // Add more data entries as needed
+];
+
+const App = () => {
+  return (
+    <>
+      {/* <Navbar /> */}
+      <div className="app-container">
+        <section id="barchart" className="chart-container">
+          <h1 className="app-header">Political Debate - Bar Chart</h1>
+          <Barchart data={dataEpisode1} />
+        </section>
+        <section id="piechart" className="chart-container">
+          <h1 className="app-header">Political Debate - Pie Chart</h1>
+          <Piechart data={dataEpisode2} />
+        </section>
+        <LineChart1 data={data}/>
+        {/* <LineChart2/> */}
+      </div>
+     
+    </>
+  );
+};
+
+export default App;
