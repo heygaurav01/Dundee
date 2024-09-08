@@ -4,12 +4,21 @@ import Barchart from '../components/Barchart.jsx';
 //import Navbar from '../components/navbar.jsx'; // Import the Navbar component
 import Piechart from '../components/Piechart.jsx';
 import LineChart1 from '../components/LineChart1.jsx';
+import Chart from '../components/CandleStickChart.jsx'
 
 import LineChart2 from '../components/LineChart2.jsx';
  // Import the Piechart component
 import '../Rpp.css'; 
 
 const Stats = () => {
+
+  const dataLast = [
+    { date: '2024-01-01', open: 0.0, close: 0.5, high: 0.7, low: -0.2 },
+    { date: '2024-02-01', open: 0.5, close: -0.1, high: 0.8, low: -0.4 },
+    { date: '2024-03-01', open: -0.1, close: 0.2, high: 0.5, low: -0.5 },
+    // More data...
+  ];
+  
     const dataEpisode1 = [
         { Topic: "Healthcare", Panellist: "Panellist A", Party: "Liberal Democrat", Viewpoint: "Opposition", Sentiment: "Mildly Negative", Sentiment_Intensity: 0.9, Time_of_Discussion: 29 },
         { Topic: "Healthcare", Panellist: "Panellist B", Party: "Liberal Democrat", Viewpoint: "Neutral", Sentiment: "Positive", Sentiment_Intensity: 0.8, Time_of_Discussion: 24 },
@@ -87,8 +96,14 @@ const Stats = () => {
 </div>
 
 
+
+<div>
+    <h1>Sentiment Candlestick Chart</h1>
+    <Chart />
+  </div>
+  </div>
     
-  </div></div>
+  </div>
   )
 }
 
