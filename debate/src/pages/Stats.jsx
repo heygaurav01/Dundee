@@ -101,6 +101,11 @@ const Stats = () => {
     <h1>Sentiment Candlestick Chart</h1>
     <Chart />
   </div>
+
+  <div>
+    <h1>Sentiment Candlestick Chart</h1>
+    <Chart />
+  </div>
   </div>
     
   </div>
