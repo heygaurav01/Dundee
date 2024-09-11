@@ -5,6 +5,7 @@ import Barchart from '../components/Barchart.jsx';
 import Piechart from '../components/Piechart.jsx';
 import LineChart1 from '../components/LineChart1.jsx';
 import Chart from '../components/CandleStickChart.jsx'
+import Double from '../components/DoubleLineChart.jsx'
 
 import LineChart2 from '../components/LineChart2.jsx';
  // Import the Piechart component
@@ -98,14 +99,16 @@ const Stats = () => {
 
 
 <div>
-    <h1>Sentiment Candlestick Chart</h1>
+    <h1>Sentiment Chart</h1>
     <Chart />
   </div>
 
-  <div>
-    <h1>Sentiment Candlestick Chart</h1>
-    <Chart />
-  </div>
+  <div className="App" style={{boxShadow:' 0px 0px 25px 0px rgba(0, 0, 0, 0.8)', marginTop:'20px',overflow:'hidden'}}>
+      <h1>Comparative Analysis</h1>
+      <Double/>
+    </div>
+
+
   </div>
     
   </div>

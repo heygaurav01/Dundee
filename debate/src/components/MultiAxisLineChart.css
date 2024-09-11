@@ -1,0 +1,121 @@
+/* MultiAxisLineChart.css */
+
+/* No gradient background, assuming it's applied elsewhere */
+
+/* Styles for the lines */
+.line {
+    fill: none;
+    stroke-width: 4; /* Default line thickness */
+    opacity: 0.9;
+    stroke-linejoin: round; /* Rounded joins for smoother line appearance */
+    transition: stroke-width 0.3s, stroke-opacity 0.3s, filter 0.3s, stroke 0.3s; /* Smooth transitions */
+    filter: url(#glow); /* Apply glow effect */
+  }
+  
+  /* Series 1 line styles with luminous blue */
+  .line1 {
+    stroke: #1E90FF; /* Luminous blue color for series1 */
+    stroke-opacity: 0.9; /* Full opacity for bright effect */
+  }
+  
+  /* Series 2 line styles with luminous green */
+  .line2 {
+    stroke: #00FF00; /* Luminous green color for series2 */
+    stroke-opacity: 0.9; /* Full opacity for bright effect */
+  }
+  
+  /* Highlighted line effects */
+  .line1:hover,
+  .line2:hover {
+    stroke-width: 8; /* Increase thickness on hover */
+    stroke-opacity: 1; /* Fully opaque on hover */
+    stroke: #FFD700; /* Change color to a bright gold on hover */
+    filter: url(#glow-hover); /* Apply a stronger glow effect on hover */
+  }
+  
+  /* Glow effect definition */
+  @keyframes glow {
+    0% { filter: url(#glow); }
+    50% { filter: url(#glow-hover); }
+    100% { filter: url(#glow); }
+  }
+  
+  /* Glow effect definition for hover */
+  @keyframes glow-hover {
+    0% { filter: url(#glow); }
+    50% { filter: url(#glow-hover); }
+    100% { filter: url(#glow); }
+  }
+  
+  /* Axes styles */
+  .axis path, .axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+  }
+  
+  /* Time range slider styles */
+  .time-range-slider {
+    margin-top: 20px;
+    width: 100%;
+    -webkit-appearance: none; /* Remove default styling */
+    background: transparent; /* Transparent background */
+  }
+  
+  .time-range-slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px; /* Height of the slider track */
+    background: #ddd; /* Light gray track */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .time-range-slider::-webkit-slider-thumb {
+    width: 16px; /* Width of the slider thumb */
+    height: 16px; /* Height of the slider thumb */
+    background: #1E90FF; /* Luminous blue thumb */
+    cursor: pointer;
+    border-radius: 50%; /* Circular thumb */
+    -webkit-appearance: none; /* Remove default thumb styling */
+  }
+  
+  .time-range-slider::-moz-range-track {
+    width: 100%;
+    height: 8px; /* Height of the slider track */
+    background: #ddd; /* Light gray track */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .time-range-slider::-moz-range-thumb {
+    width: 16px; /* Width of the slider thumb */
+    height: 16px; /* Height of the slider thumb */
+    background: #1E90FF; /* Luminous blue thumb */
+    cursor: pointer;
+    border-radius: 50%; /* Circular thumb */
+  }
+  
+  .time-range-slider::-ms-track {
+    width: 100%;
+    height: 8px; /* Height of the slider track */
+    background: transparent; /* Transparent track */
+    border-color: transparent; /* No border */
+    color: transparent; /* No color */
+  }
+  
+  .time-range-slider::-ms-fill-lower {
+    background: #ddd; /* Light gray track for lower fill */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .time-range-slider::-ms-fill-upper {
+    background: #ddd; /* Light gray track for upper fill */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .time-range-slider::-ms-thumb {
+    width: 16px; /* Width of the slider thumb */
+    height: 16px; /* Height of the slider thumb */
+    background: #1E90FF; /* Luminous blue thumb */
+    cursor: pointer;
+    border-radius: 50%; /* Circular thumb */
+  }
+  
